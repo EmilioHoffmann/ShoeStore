@@ -1,10 +1,12 @@
 package com.udacity.shoestore.splash
 
-import android.os.Handler
-import android.os.Looper
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.udacity.shoestore.core.utils.SingleLiveEvent
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class SplashViewModel : ViewModel() {
 
@@ -13,12 +15,10 @@ class SplashViewModel : ViewModel() {
         get() = _endTimerEvent
 
     init {
-        Handler(Looper.getMainLooper()).postDelayed(
-            {
-                _endTimerEvent.postValue(true)
-            },
-            SPLASH_TIME
-        )
+        viewModelScope.launch(Dispatchers.IO) {
+            delay(SPLASH_TIME)
+            _endTimerEvent.postValue(true)
+        }
     }
 
     companion object {
