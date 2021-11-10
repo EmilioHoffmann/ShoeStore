@@ -49,13 +49,13 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        navController.addOnDestinationChangedListener { controller, destination, arguments ->
+        navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.splashFragment -> {
-                    binding.toolbar.isVisible = false
+                R.id.shoeListFragment -> {
+                    binding.toolbar.isVisible = true
                 }
                 else -> {
-                    binding.toolbar.isVisible = true
+                    binding.toolbar.isVisible = false
                 }
             }
         }
