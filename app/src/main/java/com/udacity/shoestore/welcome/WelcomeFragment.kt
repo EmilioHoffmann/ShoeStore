@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.udacity.shoestore.databinding.FragmentWelcomeBinding
 
 class WelcomeFragment : Fragment() {
@@ -20,12 +21,18 @@ class WelcomeFragment : Fragment() {
     ): View {
         _binding = FragmentWelcomeBinding.inflate(layoutInflater)
         binding.lifecycleOwner = this
-
+        setListeners()
         return binding.root
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun setListeners() {
+        binding.welcomeButton.setOnClickListener {
+            findNavController().navigate(WelcomeFragmentDirections.toInstructionsFragment())
+        }
     }
 }
