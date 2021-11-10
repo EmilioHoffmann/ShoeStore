@@ -6,7 +6,6 @@ import androidx.core.view.isVisible
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.udacity.shoestore.databinding.ActivityMainBinding
-import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,7 +22,6 @@ class MainActivity : AppCompatActivity() {
             }
 
         setContentView(binding.root)
-        Timber.plant(Timber.DebugTree())
         setupViews()
         setupListeners()
     }
