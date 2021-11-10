@@ -9,4 +9,5 @@
     <string name="or">OR</string>
     <string name="create_account">Create account</string>
     <string name="password_rules_label">Password must contain at least 8 characters</string>
+    <string name="invalid_field_error">Invalid values, please verify</string>
 </resources>
