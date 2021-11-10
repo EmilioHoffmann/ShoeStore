@@ -62,13 +62,25 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
-                android:layout_width="match_parent"
+                android:id="@+id/loginPasswordRule"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/small_margin"
                 android:fontFamily="@font/roboto"
                 android:text="@string/password_rules_label"
-                android:textAlignment="center"
+                app:layout_constraintEnd_toEndOf="@id/passwordField"
+                app:layout_constraintStart_toStartOf="@id/passwordField"
                 app:layout_constraintTop_toBottomOf="@id/passwordField" />
+
+            <CheckBox
+                android:id="@+id/keepLoggedCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/keep_me_logged_in"
+                app:layout_constraintEnd_toEndOf="@id/loginPasswordRule"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@id/loginPasswordRule"
+                app:layout_constraintTop_toBottomOf="@id/loginPasswordRule" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/loginButton"
@@ -79,7 +91,7 @@
                 android:onClick="@{() -> viewModel.validateFields()}"
                 android:text="@string/login"
                 android:textColor="@android:color/black"
-                app:layout_constraintTop_toBottomOf="@id/passwordField" />
+                app:layout_constraintTop_toBottomOf="@id/keepLoggedCheckBox" />
 
             <TextView
                 android:id="@+id/loginOrCreateLabel"
@@ -109,6 +121,5 @@
                 android:visibility="@{viewModel.isLoading() ? View.VISIBLE : View.GONE}"
                 tools:visibility="gone" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-
     </ScrollView>
 </layout>

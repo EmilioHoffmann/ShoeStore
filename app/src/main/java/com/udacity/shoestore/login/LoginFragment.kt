@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.udacity.shoestore.R
+import com.udacity.shoestore.core.utils.SHARED_PREFERENCE_KEEP_LOGGED
+import com.udacity.shoestore.core.utils.saveSharedPreferenceBoolean
 import com.udacity.shoestore.databinding.FragmentLoginBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -43,8 +45,13 @@ class LoginFragment : Fragment() {
             binding.passwordField.error = if (it) null else getString(R.string.invalid_field_error)
         }
         viewModel.shouldNavigate.observe(viewLifecycleOwner) { shouldNavigate ->
-            if (shouldNavigate)
+            if (shouldNavigate) {
                 findNavController().navigate(LoginFragmentDirections.toWelcomeFragment())
+                saveSharedPreferenceBoolean(
+                    SHARED_PREFERENCE_KEEP_LOGGED,
+                    binding.keepLoggedCheckBox.isChecked
+                )
+            }
         }
     }
 }
