@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import com.udacity.shoestore.core.utils.SHARED_PREFERENCE_KEEP_LOGGED
+import com.udacity.shoestore.core.utils.saveSharedPreferenceBoolean
 import com.udacity.shoestore.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -35,10 +37,10 @@ class MainActivity : AppCompatActivity() {
             when (itemClicked.itemId) {
                 R.id.logoutMenu -> {
                     navController.navigate(R.id.actionGlobalLoginFragment)
-                    true
-                }
-                R.id.loginFragment -> {
-                    navController.navigate(R.id.actionGlobalLoginFragment)
+                    saveSharedPreferenceBoolean(
+                        SHARED_PREFERENCE_KEEP_LOGGED,
+                        false
+                    )
                     true
                 }
                 else -> {
