@@ -37,7 +37,7 @@ class SplashFragment : Fragment() {
 
     private fun setObservers() {
         viewModel.endTimerEvent.observe(viewLifecycleOwner) {
-            if (getSharedPreferenceBoolean(SHARED_PREFERENCE_KEEP_LOGGED)) {
+            if (requireContext().getSharedPreferenceBoolean(SHARED_PREFERENCE_KEEP_LOGGED)) {
                 findNavController().navigate(SplashFragmentDirections.toWelcomeFragment())
             } else {
                 findNavController().navigate(SplashFragmentDirections.toLoginFragment())

@@ -47,7 +47,7 @@ class LoginFragment : Fragment() {
         viewModel.shouldNavigate.observe(viewLifecycleOwner) { shouldNavigate ->
             if (shouldNavigate) {
                 findNavController().navigate(LoginFragmentDirections.toWelcomeFragment())
-                saveSharedPreferenceBoolean(
+                requireContext().saveSharedPreferenceBoolean(
                     SHARED_PREFERENCE_KEEP_LOGGED,
                     binding.keepLoggedCheckBox.isChecked
                 )
