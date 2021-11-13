@@ -1,6 +1,7 @@
 package com.udacity.shoestore.shoe_list
 
 import android.os.Bundle
+import android.transition.TransitionInflater
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,6 +22,8 @@ class ShoeListFragment : Fragment() {
         _binding = FragmentShoeListBinding.inflate(layoutInflater)
         binding.lifecycleOwner = this
 
+        sharedElementEnterTransition =
+            TransitionInflater.from(requireContext()).inflateTransition(android.R.transition.move)
         return binding.root
     }
 

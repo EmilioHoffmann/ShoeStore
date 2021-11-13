@@ -10,8 +10,11 @@
     <string name="create_account">Create account</string>
     <string name="password_rules_label">Password must contain at least 8 characters</string>
     <string name="invalid_field_error">Invalid values, please verify</string>
-    <string name="welcome_title">Welcome to our beautiful Shoe Store</string>
-    <string name="welcome_description">Here you will be able to store your personal shoe list</string>
+    <string name="welcome_title">Welcome to our beautiful Shoe Store Inventory</string>
+    <string name="welcome_description">Here you will be able to store your favorite shoes so you can compare then and decide which one to buy or use today </string>
     <string name="continue_button">Continue</string>
     <string name="keep_me_logged_in">Keep me logged in</string>
+    <string name="instructions">Instructions</string>
+    <string name="instructions_description">The next screen is where you will see your shoe list and add new shoes</string>
+    <string name="instructions_add_button">In order to add a new shoe to your list you just need to click on the button like the one bellow. It will be on the bottom right corner.</string>
 </resources>
