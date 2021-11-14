@@ -73,4 +73,9 @@ class ShoeDetailFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
+    override fun onResume() {
+        super.onResume()
+        requireActivity().invalidateOptionsMenu()
+    }
 }

@@ -36,6 +36,11 @@ class ShoeListFragment : Fragment() {
         return binding.root
     }
 
+    override fun onResume() {
+        super.onResume()
+        requireActivity().invalidateOptionsMenu()
+    }
+
     private fun setObservers() {
         viewModel.shoeList.observe(viewLifecycleOwner) {
             if (it?.isNotEmpty() == true) {

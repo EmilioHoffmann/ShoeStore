@@ -1,6 +1,8 @@
 package com.udacity.shoestore
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.navigation.NavController
@@ -29,7 +31,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupViews() {
-        binding.toolbar.inflateMenu(R.menu.main_toolbar)
+        setSupportActionBar(binding.toolbar)
     }
 
     private fun setupListeners() {
@@ -53,11 +55,41 @@ class MainActivity : AppCompatActivity() {
             when (destination.id) {
                 R.id.shoeListFragment -> {
                     binding.toolbar.isVisible = true
+                    setBackHomeButton(false)
+                }
+                R.id.shoeDetailFragment -> {
+                    setBackHomeButton(true)
                 }
                 else -> {
                     binding.toolbar.isVisible = false
                 }
             }
         }
+    }
+
+    private fun setBackHomeButton(isEnabled: Boolean) {
+        supportActionBar?.setDisplayHomeAsUpEnabled(isEnabled)
+        supportActionBar?.setDisplayShowHomeEnabled(isEnabled)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        super.onCreateOptionsMenu(menu)
+        menuInflater.inflate(R.menu.main_toolbar, menu)
+        return true
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
+        super.onPrepareOptionsMenu(menu)
+        menu?.findItem(R.id.logoutMenu)?.isVisible =
+            navController.currentDestination?.id != R.id.shoeDetailFragment
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        super.onOptionsItemSelected(item)
+        if (item.itemId == android.R.id.home) {
+            navController.navigateUp()
+        }
+        return true
     }
 }
