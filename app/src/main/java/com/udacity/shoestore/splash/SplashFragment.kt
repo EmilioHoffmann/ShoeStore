@@ -9,6 +9,7 @@ import androidx.navigation.fragment.findNavController
 import com.udacity.shoestore.core.utils.SHARED_PREFERENCE_KEEP_LOGGED
 import com.udacity.shoestore.core.utils.getSharedPreferenceBoolean
 import com.udacity.shoestore.databinding.FragmentSplashBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SplashFragment : Fragment() {
 
@@ -16,7 +17,7 @@ class SplashFragment : Fragment() {
     private val binding
         get() = _binding!!
 
-    private lateinit var viewModel: SplashViewModel
+    private val viewModel: SplashViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -24,7 +25,6 @@ class SplashFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentSplashBinding.inflate(layoutInflater)
-        viewModel = SplashViewModel()
         setObservers()
 
         return binding.root
