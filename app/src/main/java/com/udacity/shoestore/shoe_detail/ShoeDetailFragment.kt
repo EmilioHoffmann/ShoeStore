@@ -28,10 +28,14 @@ class ShoeDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentShoeDetailBinding.inflate(layoutInflater)
-        binding.lifecycleOwner = this
-        binding.viewModel = viewModel
 
-        binding.descriptionEditorField.setRawInputType(InputType.TYPE_CLASS_TEXT)
+        with(binding) {
+            lifecycleOwner = this@ShoeDetailFragment
+            viewModel = this@ShoeDetailFragment.viewModel
+
+            descriptionEditorField.setRawInputType(InputType.TYPE_CLASS_TEXT)
+        }
+
         setListeners()
         setObservers()
         return binding.root
