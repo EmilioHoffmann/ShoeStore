@@ -12,14 +12,23 @@
             type="com.udacity.shoestore.login.LoginViewModel" />
     </data>
 
+    <!--
+         At this screen it's being used a ScrollView
+         to enable the user to scroll the view when
+         the keyboard is open
+         and a LinearLayout inside to align all the
+         views vertically
+      -->
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/emailField"
@@ -28,8 +37,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/double_margin"
                 android:layout_marginTop="@dimen/giant_margin"
-                android:hint="@string/email"
-                app:layout_constraintTop_toTopOf="parent">
+                android:hint="@string/email">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -49,8 +57,7 @@
                 android:layout_marginTop="@dimen/normal_margin"
                 android:hint="@string/password"
                 app:endIconMode="password_toggle"
-                app:errorIconDrawable="@null"
-                app:layout_constraintTop_toBottomOf="@id/emailField">
+                app:errorIconDrawable="@null">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -63,24 +70,19 @@
 
             <TextView
                 android:id="@+id/loginPasswordRule"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/double_margin"
                 android:layout_marginTop="@dimen/small_margin"
                 android:fontFamily="@font/roboto"
-                android:text="@string/password_rules_label"
-                app:layout_constraintEnd_toEndOf="@id/passwordField"
-                app:layout_constraintStart_toStartOf="@id/passwordField"
-                app:layout_constraintTop_toBottomOf="@id/passwordField" />
+                android:text="@string/password_rules_label" />
 
             <CheckBox
                 android:id="@+id/keepLoggedCheckBox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/keep_me_logged_in"
-                app:layout_constraintEnd_toEndOf="@id/loginPasswordRule"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@id/loginPasswordRule"
-                app:layout_constraintTop_toBottomOf="@id/loginPasswordRule" />
+                android:layout_marginHorizontal="@dimen/double_margin"
+                android:text="@string/keep_me_logged_in" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/loginButton"
@@ -90,18 +92,17 @@
                 android:layout_marginTop="@dimen/big_margin"
                 android:onClick="@{() -> viewModel.validateFields()}"
                 android:text="@string/login"
-                android:textColor="@android:color/black"
-                app:layout_constraintTop_toBottomOf="@id/keepLoggedCheckBox" />
+                android:textColor="@android:color/black" />
 
             <TextView
                 android:id="@+id/loginOrCreateLabel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/double_margin"
                 android:layout_marginTop="@dimen/normal_margin"
                 android:text="@string/or"
                 android:textAlignment="center"
-                android:textColor="@android:color/black"
-                app:layout_constraintTop_toBottomOf="@id/loginButton" />
+                android:textColor="@android:color/black" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/newAccountButton"
@@ -111,8 +112,7 @@
                 android:layout_marginTop="@dimen/normal_margin"
                 android:onClick="@{() -> viewModel.validateFields()}"
                 android:text="@string/create_account"
-                android:textColor="@android:color/black"
-                app:layout_constraintTop_toBottomOf="@id/loginOrCreateLabel" />
+                android:textColor="@android:color/black" />
 
             <include
                 android:id="@+id/loginLoader"
@@ -120,6 +120,6 @@
                 android:elevation="10dp"
                 android:visibility="@{viewModel.isLoading() ? View.VISIBLE : View.GONE}"
                 tools:visibility="gone" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
     </ScrollView>
 </layout>

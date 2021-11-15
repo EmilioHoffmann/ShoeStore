@@ -10,6 +10,14 @@
             type="com.udacity.shoestore.shoe_list.ShoeListViewModel" />
     </data>
 
+    <!--
+         At this screen it's being used a ScrollView
+         to enable the user to scroll the view when
+         the keyboard is open
+         and a ConstraintLayout inside to separate
+         the input view and the buttons
+      -->
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
