@@ -7,4 +7,5 @@
     <dimen name="big_margin">64dp</dimen>
     <dimen name="giant_margin">128dp</dimen>
     <dimen name="shoe_description_height">150dp</dimen>
+    <dimen name="loader_elevation">10dp</dimen>
 </resources>

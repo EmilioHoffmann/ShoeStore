@@ -117,7 +117,7 @@
             <include
                 android:id="@+id/loginLoader"
                 layout="@layout/custom_loader"
-                android:elevation="10dp"
+                android:elevation="@dimen/loader_elevation"
                 android:visibility="@{viewModel.isLoading() ? View.VISIBLE : View.GONE}"
                 tools:visibility="gone" />
         </LinearLayout>
